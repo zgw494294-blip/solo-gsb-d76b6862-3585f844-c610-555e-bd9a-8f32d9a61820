@@ -1,0 +1,145 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+  background: #14161c;
+  color: #e8e9ee;
+  min-height: 100vh;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 24px;
+  background: #1c1f28;
+  border-bottom: 1px solid #2a2e3a;
+}
+header h1 { font-size: 20px; }
+
+.badge {
+  font-size: 13px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: #2a2e3a;
+  color: #9aa0b0;
+}
+.badge.running { background: #2c4a33; color: #7fd98f; }
+.badge.done    { background: #4a3a2c; color: #f0b866; }
+
+main { max-width: 1080px; margin: 0 auto; padding: 24px; }
+.hidden { display: none !important; }
+.hint { color: #9aa0b0; font-size: 13px; margin: 8px 0 16px; }
+
+/* ---------- 录入表单 ---------- */
+.cue-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+  align-items: center;
+}
+.cue-row .seq {
+  width: 26px;
+  text-align: right;
+  color: #9aa0b0;
+  font-variant-numeric: tabular-nums;
+}
+input, textarea {
+  background: #1c1f28;
+  border: 1px solid #2a2e3a;
+  border-radius: 8px;
+  color: #e8e9ee;
+  padding: 10px 12px;
+  font-size: 15px;
+  outline: none;
+}
+input:focus { border-color: #5b7fff; }
+.cue-row .input-id { width: 120px; }
+.cue-row .input-content { flex: 1; }
+
+button {
+  background: #2a2e3a;
+  color: #e8e9ee;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 14px;
+  cursor: pointer;
+}
+button:hover { background: #343947; }
+button:disabled { opacity: 0.45; cursor: not-allowed; }
+button.primary { background: #3b5bff; font-weight: 600; }
+button.primary:hover { background: #2f4de0; }
+button.danger { background: #4a2626; color: #ff9a9a; margin-top: 16px; }
+button.danger:hover { background: #5c2e2e; }
+button.small { padding: 5px 10px; font-size: 13px; }
+
+.row-actions { display: flex; gap: 12px; margin-top: 16px; }
+
+/* ---------- 演出视图 ---------- */
+#done-banner {
+  background: #2c4a33;
+  color: #7fd98f;
+  border-radius: 10px;
+  padding: 14px 18px;
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 18px;
+  text-align: center;
+}
+
+.columns { display: grid; grid-template-columns: 1.4fr 1fr; gap: 20px; }
+@media (max-width: 800px) { .columns { grid-template-columns: 1fr; } }
+
+.card {
+  background: #1c1f28;
+  border: 1px solid #2a2e3a;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 16px;
+}
+.card .label { font-size: 13px; color: #9aa0b0; margin-bottom: 6px; }
+.card .cue-id { font-size: 15px; color: #8fa3ff; font-weight: 600; }
+.card .cue-content { font-size: 26px; font-weight: 700; margin: 10px 0 16px; line-height: 1.4; word-break: break-word; }
+.card.next .cue-content { font-size: 18px; font-weight: 500; color: #c6c9d4; }
+.card.empty { color: #9aa0b0; text-align: center; padding: 28px; }
+
+#confirm-btn { width: 100%; font-size: 18px; padding: 14px; }
+
+.col-side h3 { font-size: 14px; color: #9aa0b0; margin: 14px 0 8px; }
+.cue-list { list-style: none; }
+.cue-list li {
+  background: #1c1f28;
+  border: 1px solid #2a2e3a;
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+}
+.cue-list li.is-current { border-color: #3b5bff; }
+.cue-list li.is-next { border-color: #4a5165; }
+.cue-list .line1 { display: flex; align-items: center; gap: 8px; }
+.cue-list .cid { color: #8fa3ff; font-weight: 600; font-size: 13px; white-space: nowrap; }
+.cue-list .ctext { flex: 1; word-break: break-word; }
+.cue-list .ops { display: flex; gap: 6px; }
+.cue-list .ops button { padding: 4px 8px; font-size: 12px; }
+.cue-list .time { color: #6b7186; font-size: 12px; white-space: nowrap; }
+.cue-list .empty-tip { background: none; border: none; color: #6b7186; padding: 4px 0; }
+
+.edit-row { display: flex; gap: 8px; margin-top: 8px; }
+.edit-row input { flex: 1; padding: 8px 10px; font-size: 14px; }
+
+/* ---------- 提示条 ---------- */
+#toast {
+  position: fixed;
+  left: 50%;
+  bottom: 32px;
+  transform: translateX(-50%);
+  background: #33241a;
+  color: #f0b866;
+  border: 1px solid #5c4526;
+  border-radius: 10px;
+  padding: 12px 20px;
+  font-size: 14px;
+  z-index: 99;
+  max-width: 80vw;
+}

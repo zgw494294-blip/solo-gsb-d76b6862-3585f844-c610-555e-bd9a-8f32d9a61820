@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>舞台提示执行台</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header>
+    <h1>🎭 舞台提示执行台</h1>
+    <span id="phase-badge" class="badge"></span>
+  </header>
+
+  <main>
+    <!-- 开场前：录入提示 -->
+    <section id="setup-section" class="hidden">
+      <h2>开场前 · 按顺序录入提示（2～12 条）</h2>
+      <p class="hint">每条提示需要唯一编号和非空内容，顺序即发出顺序。</p>
+      <div id="cue-rows"></div>
+      <div class="row-actions">
+        <button id="add-row" type="button">＋ 添加一条</button>
+        <button id="start-show" type="button" class="primary">开始演出</button>
+      </div>
+    </section>
+
+    <!-- 演出中 / 已完成 -->
+    <section id="show-section" class="hidden">
+      <div id="done-banner" class="hidden">✅ 全部提示已发出，演出完成！</div>
+
+      <div class="columns">
+        <div class="col-main">
+          <div id="current-card"></div>
+          <div id="next-card"></div>
+        </div>
+        <div class="col-side">
+          <h3>待发队列</h3>
+          <ul id="pending-list" class="cue-list"></ul>
+          <h3>已发记录</h3>
+          <ul id="issued-list" class="cue-list"></ul>
+          <button id="reset-show" type="button" class="danger">重新开场</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast" class="hidden"></div>
+  <script src="/static/app.js"></script>
+</body>
+</html>
